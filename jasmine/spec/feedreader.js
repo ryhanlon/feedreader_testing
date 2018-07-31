@@ -54,6 +54,13 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
 	describe('The Menu', function() {
+		// Add a spyOnEvent, for clicks
+		let spyEvent, menu;
+
+		beforeEach(function() {
+			// menu icon is passed onto a spy listener
+			spyEvent = spyOnEvent('.menu-icon-link', 'click');
+		});
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -63,8 +70,29 @@ $(function() {
         it('menu is hidden by default', function() {
         	let element = $('body');
         	element.addClass('menu-hidden');
-				// expect(element).toHaveClass('menu-hidden');
-				expect(element.attr('class')).toEqual('menu-hidden');
+				expect(element).toHaveClass('menu-hidden');
+				// expect(element.attr('class')).toEqual('menu-hidden');
+		});
+
+        it('menu appears when icon clicked', () => {
+
+        	// icon clicked
+			$('.menu-icon-link').trigger('click');
+			expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
+			expect(spyEvent).toHaveBeenTriggered();
+			// check if class is empty
+			menu = $('body').attr('class');
+			expect(menu).toBe('');
+		});
+
+		it('menu disappears when icon is clicked', () => {
+			// icon clicked
+			$('.menu-icon-link').trigger('click');
+			expect('click').toHaveBeenTriggeredOn('.menu-icon-link');
+			expect(spyEvent).toHaveBeenTriggered();
+			// check if .menu-hidden class exists
+			menu = $('body').attr('class');
+			expect(menu).toBe('menu-hidden');
 		});
 
          /* TODO: Write a test that ensures the menu changes
@@ -72,12 +100,12 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-         it('menu changes visibility when clicked', function() {
-         	let element = $('body');
-        	element.addClass('menu-hidden');
-				// expect(element).not.toHaveClass('menu-hidden');
-			 	expect(element.attr('class')).not.toEqual('menu-hidden');
-		 });
+         // it('menu changes visibility when clicked', function() {
+         // 	let element = $('body');
+        	// element.addClass('menu-hidden');
+			// 	// expect(element).not.toHaveClass('menu-hidden');
+			//  	expect(element.attr('class')).not.toEqual('menu-hidden');
+		 // });
 
      });
 
