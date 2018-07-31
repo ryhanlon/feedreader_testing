@@ -74,7 +74,14 @@ $(function() {
 				// expect(element.attr('class')).toEqual('menu-hidden');
 		});
 
-        it('menu appears when icon clicked', () => {
+
+
+         /* TODO: Write a test that ensures the menu changes
+          * visibility when the menu icon is clicked. This test
+          * should have two expectations: does the menu display when
+          * clicked and does it hide when clicked again.
+          */
+       it('menu appears when icon clicked', () => {
 
         	// icon clicked
 			$('.menu-icon-link').trigger('click');
@@ -94,18 +101,6 @@ $(function() {
 			menu = $('body').attr('class');
 			expect(menu).toBe('menu-hidden');
 		});
-
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
-         // it('menu changes visibility when clicked', function() {
-         // 	let element = $('body');
-        	// element.addClass('menu-hidden');
-			// 	// expect(element).not.toHaveClass('menu-hidden');
-			//  	expect(element.attr('class')).not.toEqual('menu-hidden');
-		 // });
 
      });
 
