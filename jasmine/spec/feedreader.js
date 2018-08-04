@@ -6,47 +6,41 @@
 
 
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+// All of the tests are with in this function so they run after the page loads.
+
+    // Checks that the allFeeds array has content, key: value
     describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
-         * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
-         */
+        // Checks that the variable is defined and not empty
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+        // Checks that the url is defined and not empty
         it('url is defined and not empty', function() {
+        	// Loops through allFeeds array
 			allFeeds.forEach(function(key) {
+				// Checks that url is defined
 				expect(key.url).toBeDefined();
+				// Checks that url is not empty
 				expect(key.url.length).not.toBe(0);
 			})
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+        // Checks that name is defined and not empty
         it('named is defined and not empty', function() {
+        	// Loops through allFeeds array
 			allFeeds.forEach(function(key) {
+				// Checks that name is defined
 				expect(key.name).toBeDefined();
+				// Checks that name is not empty
 				expect(key.name.length).not.toBe(0);
 			})
         });
     });
+
 
 	// Checks that when the icon/hamburger is clicked that the menu appears and disappears
 	describe('The Menu', function() {
@@ -56,6 +50,7 @@ $(function() {
         it('menu is hidden by default', function() {
         	// When page loads, menu is hidden
         	bodyElement.addClass('menu-hidden');
+        		// The class is there (in the html)
 				expect(bodyElement.hasClass('menu-hidden')).toBe(true);
 		});
 
@@ -67,8 +62,8 @@ $(function() {
 			hamburger.click();
 			expect(bodyElement.hasClass('menu-hidden')).toBe(true);
 		});
-
      });
+
 
 	// Check that when the feed is loaded it is not empty.
         describe('Initial Entries', () => {
@@ -82,6 +77,7 @@ $(function() {
         	it('a single entry within the .feed container', () => {
         		// Selectors, parent=.feed child=.entry
 				let entries = $('.feed .entry');
+				// Check that the entries are not empty
 				expect(entries.length).toBeGreaterThan(0);
 			});
 		});
